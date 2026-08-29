@@ -22,7 +22,7 @@ Nav order: Home / Buy · Listen / Live / Sync / Merch / About / Contact.
 - Global styles `assets/styles.css`, global JS `assets/main.js`, hero canvas `assets/hero-viz.js`.
 - **Cache-busting is non-negotiable.** Every CSS/JS/asset reference carries `?v=YYYYMMDDx`.
   Bump it on every change that touches `styles.css`, `main.js` or `hero-viz.js`, or returning
-  visitors get stale files. Current: `?v=20260829g`.
+  visitors get stale files. Current: `?v=20260829i`.
   One-liner: `sed -i '' 's/v=20260829g/v=20260829g/g' *.html assets/styles.css`
 - Round-2 logo: `assets/logo-eric-round2.png` (transparent PNG, knocked out from Eric's
   "Musicated Blue 2" artwork). Drives the hero overlay, About photo, merch watermarks,
