@@ -88,21 +88,31 @@ change depends on an image's shape or proportions, say so and ask, rather than i
 
 ## The hero logo geometry
 
-The logo sits inside the vinyl's label ring drawn by `assets/hero-viz.js`.
+The logo sits inside the vinyl label ring drawn by `assets/hero-viz.js`. Two things are easy to
+get wrong here, and both have already been got wrong.
 
-- Ring radius = `0.40 x 0.46` = **0.184** of the viz width.
-- The logo is 1.722:1, so its half-diagonal is `width x 0.578`.
-- It fits while `width x 0.578 <= 0.184`, i.e. **width <= 31.8%**.
-- It is set to **29%** in `assets/styles.css`, leaving about 9% clearance. Height stays `auto`.
+**1. Centre the artwork's disc, not the image's bounding box.** The record drawn inside the PNG is
+not centred in the file. Measured by fitting a circle to its outline: in the 1400x813 source the
+disc centre is at **(682.2, 567.7)** with radius **451.8** — that is 19.83% of the image height
+*below*, and 1.27% of the width *right of*, the bounding-box centre. Centring the box leaves the
+disc visibly skewed inside the ring. The CSS corrects for it:
 
-**Do not set the size to 36.8%.** That is the ring *diameter*, and a rectangle as wide as a circle
-is wide cannot fit inside it — the wordmark sits below centre where the circle is narrower, so it
-spills out the sides. This exact mistake has been made once already.
+```css
+transform: translate(calc(-50% + 1.27%), calc(-50% - 19.83%));
+```
 
-**Do not size the logo from JavaScript.** `hero-viz.js` must not touch `.hero__viz__logo`. Inline
-styles set at runtime override the stylesheet, so the CSS looks correct while the live page is
-wrong — which is very hard for anyone to debug. The size lives in `assets/styles.css` and nowhere
-else.
+**2. Size against the ink, not the box.** The furthest opaque pixel is 732px from the disc centre.
+Ring radius is `0.40 x 0.46` = 0.184 of the viz width, so the logo fits while
+`width x (732/1400) <= 0.184 x viz`. It is set to **32.4%**, leaving about 8% clearance.
+
+**Do not set the width to 36.8%.** That is the ring *diameter*, and a rectangle as wide as a
+circle cannot fit inside it. **Do not force a square box or `object-fit`** — the logo is a wide
+1.722:1 lockup. **Do not size or position it from JavaScript**; `hero-viz.js` must not touch
+`.hero__viz__logo`, because runtime inline styles override the stylesheet and make the CSS look
+correct while the live page is wrong.
+
+If the logo file is ever replaced, all of these numbers must be re-measured against the new
+artwork. They describe this specific PNG, not a general rule.
 
 ## What you cannot do here
 

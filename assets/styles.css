@@ -316,14 +316,18 @@ section{ position:relative; }
 .hero__viz__logo{
   position:absolute;
   left:50%; top:50%;
-  transform: translate(-50%, -50%);
-  /* Fits the lockup INSIDE the vinyl label ring — do not set this to the ring
-     diameter (36.8%): a rectangle that wide sticks out of a circle that size.
-     Ring radius r = 0.40 * 0.46 = 0.184 of the viz. The logo is 1.722:1, so its
-     half-diagonal is (w/2)*sqrt(1+1/1.722^2) = w*0.578, and it fits while
-     w*0.578 <= 0.184, i.e. w <= 31.8%. 29% leaves ~9% clearance. Height stays
-     auto — forcing a square box is what broke this before. */
-  width: 29%;
+  /* The artwork's own record disc is NOT centred in the PNG's bounding box: its
+     centre sits 19.83% of the image height BELOW, and 1.27% of the width right of,
+     the box centre. Centring the box therefore leaves the disc visibly off-centre
+     inside the teal label ring. This transform centres the DISC, not the box.
+     Measured by fitting a circle to the artwork's outline: centre (682.2, 567.7),
+     radius 451.8 in the 1400x813 source. Re-measure if the logo file changes. */
+  transform: translate(calc(-50% + 1.27%), calc(-50% - 19.83%));
+  /* Sized against the real ink, not the bounding box: the furthest opaque pixel is
+     732px from the disc centre, so width = ring_radius x 0.92 / 732 x 1400 = 32.4%
+     of the viz, leaving 8% clearance inside the ring. Height stays auto — the logo
+     is a WIDE 1.722:1 lockup, and forcing a square box is what broke this before. */
+  width: 32.4%;
   z-index: 2;
   pointer-events:none;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,.55));
