@@ -121,14 +121,14 @@ real **label** pages; the rest are not, and the difference matters:
   honest best available. Do not "fix" them to an artist page: "Eric Martin" is a very common name
   (there is also the Mr. Big singer), and the label has several artists anyway. If Eric supplies
   official DSP links from his distributor, use those instead.
-- **Bandcamp** —  does not exist.  is Eric's own page
-  and is what the card uses.
-- **SoundCloud** —  is the label's own profile.
-- **YouTube** — there is no  channel (404). The footer and the Live page both
-  use Eric's channel,  ("Eric Martin / Me One", @EricMartinMusic).
+- **Bandcamp** — `musicated.bandcamp.com` does not exist (the subdomain is unclaimed).
+  `meone.bandcamp.com` is Eric's own page and is what the card uses.
+- **SoundCloud** — `soundcloud.com/musicatedrecords` is the label's own profile.
+- **YouTube** — there is no `@musicatedrecords` channel; it 404s. The footer and the Live page both
+  use Eric's channel, `UCZgfJ7ZeAhPUknXXtB20-mw` ("Eric Martin / Me One", `@EricMartinMusic`).
 
-The Live page reads that channel id from  in
-. Blank it and the panel falls back to a button-less offline state rather than showing
+The Live page reads that channel id from `<div class="stage" data-yt-channel="...">` in
+`live.html`. Blank it and the panel falls back to a button-less offline state rather than showing
 a broken player. The original build shipped YouTube's OWN corporate channel id there, so the
 stream could never have appeared — never guess an id.
 
