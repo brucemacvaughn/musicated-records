@@ -316,18 +316,14 @@ section{ position:relative; }
 .hero__viz__logo{
   position:absolute;
   left:50%; top:50%;
-  /* The artwork's own record disc is NOT centred in the PNG's bounding box: its
-     centre sits 19.83% of the image height BELOW, and 1.27% of the width right of,
-     the box centre. Centring the box therefore leaves the disc visibly off-centre
-     inside the teal label ring. This transform centres the DISC, not the box.
-     Measured by fitting a circle to the artwork's outline: centre (682.2, 567.7),
-     radius 451.8 in the 1400x813 source. Re-measure if the logo file changes. */
-  transform: translate(calc(-50% + 1.27%), calc(-50% - 19.83%));
-  /* Sized against the real ink, not the bounding box: the furthest opaque pixel is
-     732px from the disc centre, so width = ring_radius x 0.92 / 732 x 1400 = 32.4%
-     of the viz, leaving 8% clearance inside the ring. Height stays auto — the logo
-     is a WIDE 1.722:1 lockup, and forcing a square box is what broke this before. */
-  width: 32.4%;
+  transform: translate(-50%, -50%);
+  /* The logo is a square circular mark (1200x1200) whose bounding box IS its
+     record — trimmed to the disc on purpose, so plain centring works and no
+     offset is needed. Sizing: the canvas draws its teal ring at
+     0.40 x 0.96 x 0.46 = 0.1766 of the viz. The disc radius is half the image
+     width, so width 32% puts it at 0.16 of the viz = 91% of the ring, leaving
+     the teal visible as a rim around the artwork. */
+  width: 32%;
   z-index: 2;
   pointer-events:none;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,.55));

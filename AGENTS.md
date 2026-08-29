@@ -77,42 +77,37 @@ stop agents rediscovering the wrong one. Do not add more logo variants.
 
 ## Never infer an image's shape from its filename
 
-`assets/musicated-logo-circle.png` is **not** a circular or square mark. It is a **wide 1.722:1
-lockup, 1400x813** — a record with the words MUSICATED RECORDS running across it. The word
-"circle" in the name refers to the artwork's motif, not its dimensions.
-
-An agent already assumed from that filename that the asset was "a centred 1:1 circular mark",
-sized it as a square, and pushed a logo that spilled out of the vinyl label on the live site.
-It could not see the image, so the filename became the evidence. **You cannot see images. If a
-change depends on an image's shape or proportions, say so and ask, rather than inferring.**
+You cannot see images. An agent once assumed from the name
+`assets/musicated-logo-circle.png` that the asset was "a centred 1:1 circular mark", sized it as a
+square, and pushed a logo that spilled out of the vinyl label on the live site. At that time it was
+a wide 1.722:1 lockup. **If a change depends on an image's shape, proportions or where its content
+sits inside the frame, say so and ask — do not infer it from the filename or from what a previous
+version was.**
 
 ## The hero logo geometry
 
-The logo sits inside the vinyl label ring drawn by `assets/hero-viz.js`. Two things are easy to
-get wrong here, and both have already been got wrong.
-
-**1. Centre the artwork's disc, not the image's bounding box.** The record drawn inside the PNG is
-not centred in the file. Measured by fitting a circle to its outline: in the 1400x813 source the
-disc centre is at **(682.2, 567.7)** with radius **451.8** — that is 19.83% of the image height
-*below*, and 1.27% of the width *right of*, the bounding-box centre. Centring the box leaves the
-disc visibly skewed inside the ring. The CSS corrects for it:
+`assets/musicated-logo-circle.png` is a **square circular mark, 1200x1200**, and it has been
+trimmed so its **bounding box is exactly the record** — no transparent padding, disc centred. That
+is deliberate: it means plain centring works and no positional offset is needed.
 
 ```css
-transform: translate(calc(-50% + 1.27%), calc(-50% - 19.83%));
+transform: translate(-50%, -50%);
+width: 32%;
 ```
 
-**2. Size against the ink, not the box.** The furthest opaque pixel is 732px from the disc centre.
-Ring radius is `0.40 x 0.46` = 0.184 of the viz width, so the logo fits while
-`width x (732/1400) <= 0.184 x viz`. It is set to **32.4%**, leaving about 8% clearance.
+The canvas in `assets/hero-viz.js` draws its teal ring at `0.40 x 0.96 x 0.46` = **0.1766** of the
+viz width. The logo's disc radius is half its own width, so 32% puts the disc at 0.16 of the viz —
+**91% of the ring** — leaving the teal visible as a rim around the artwork. Measured after the
+change: centre offset 0.00, 0.00 px.
 
-**Do not set the width to 36.8%.** That is the ring *diameter*, and a rectangle as wide as a
-circle cannot fit inside it. **Do not force a square box or `object-fit`** — the logo is a wide
-1.722:1 lockup. **Do not size or position it from JavaScript**; `hero-viz.js` must not touch
-`.hero__viz__logo`, because runtime inline styles override the stylesheet and make the CSS look
-correct while the live page is wrong.
+**Do not set the width to 36.8%.** That is the label *diameter*, and at that size the logo covers
+the teal ring completely. **Do not size or position the logo from JavaScript** — `hero-viz.js` must
+not touch `.hero__viz__logo`, because runtime inline styles override the stylesheet and make the
+CSS look correct while the live page is wrong. That has happened once and was very hard to find.
 
-If the logo file is ever replaced, all of these numbers must be re-measured against the new
-artwork. They describe this specific PNG, not a general rule.
+**If the logo file is ever replaced, re-measure.** These numbers describe this specific PNG. A
+replacement that is not square, or not trimmed to its disc, needs different values — and the
+favicons and og-card must be regenerated too (see the logo section above).
 
 ## What you cannot do here
 
