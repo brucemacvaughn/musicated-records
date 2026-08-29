@@ -5,11 +5,12 @@
    them from here — runtime inline styles override the stylesheet and make the
    CSS look correct while the live page is wrong.
    Two different rates below, which is easy to get wrong: the disc rotates at
-   t*0.6 rad/s (10.472s/turn), but the highlight sweep is drawn inside that
-   rotated context AND given its own start angle of t*0.6, so it travels at
-   1.2 rad/s (5.236s/turn). The grooves are concentric, so the disc's rotation is
-   invisible and the highlight is the only motion you can see — the CSS spin is
-   matched to 5.236s for that reason. Change 0.6 here and update styles.css.
+   t*0.45 rad/s (13.963s/turn), but the highlight sweep is drawn inside that
+   rotated context AND given its own start angle of t*0.45, so it travels at
+   0.9 rad/s (6.981s/turn). The grooves are concentric, so the disc's rotation is
+   invisible and the highlight is the only motion you can see — the CSS logo spin
+   in styles.css is matched to 6.981s for that reason. BOTH numbers below are
+   0.45; change them and the CSS duration must change to 2*PI/(2*0.45).
    Pure canvas, no audio input required (procedural waveform)
 */
 (function(){
@@ -58,7 +59,7 @@
     // vinyl disc (rotating)
     ctx.save();
     ctx.translate(cx, cy);
-    ctx.rotate(t * 0.6);
+    ctx.rotate(t * 0.45);
     // body
     ctx.fillStyle = "#080808";
     ctx.beginPath(); ctx.arc(0,0,R,0,Math.PI*2); ctx.fill();
@@ -69,7 +70,7 @@
       ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.stroke();
     }
     // highlight sweep
-    var sweep = ctx.createConicGradient ? ctx.createConicGradient(t*0.6, 0, 0) : null;
+    var sweep = ctx.createConicGradient ? ctx.createConicGradient(t*0.45, 0, 0) : null;
     if (sweep){
       sweep.addColorStop(0, "rgba(255,255,255,0)");
       sweep.addColorStop(0.06, "rgba(255,255,255,0.22)");

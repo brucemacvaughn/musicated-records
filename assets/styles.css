@@ -326,13 +326,12 @@ section{ position:relative; }
   pointer-events:none;
   /* Spins WITH the record, like a real deck — matched to the WHITE HIGHLIGHT,
      which is the only rotation you can actually see. The grooves turn at
-     t*0.6 rad/s (10.472s) but they are concentric circles, so their rotation is
+     t*0.45 rad/s (13.963s) but they are concentric circles, so their rotation is
      invisible. The highlight is drawn inside that rotating context AND given its
-     own start angle of t*0.6, so it travels at 1.2 rad/s = 5.236s per turn
-     (measured on the rendered page: 5.227s). Matching the highlight is what makes
+     own start angle of t*0.45, so it travels at 0.9 rad/s = 6.981s per turn. Matching the highlight is what makes
      the label and the record read as one object. Change 0.6 in hero-viz.js and
      this must change with it. No drop-shadow — it would orbit with the artwork. */
-  animation: hero-label-spin 5.236s linear infinite;
+  animation: hero-label-spin 6.981s linear infinite;
   transform: translate(-50%, -50%);
 }
 @keyframes hero-label-spin{
