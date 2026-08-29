@@ -106,7 +106,7 @@ section{ position:relative; }
 .brand__mark{
   width:44px; height:44px;
   border-radius: 8px;
-  background:#000 url('/assets/favicon-192.png?v=20260829a') center/92% no-repeat;
+  background:#000 url('favicon-192.png?v=20260829b') center/92% no-repeat;
   border: 1px solid var(--line-2);
 }
 .brand__name{
@@ -837,7 +837,7 @@ section{ position:relative; }
 }
 .merch__cover .logo-watermark{
   position:absolute; inset:0;
-  background: url('/assets/logo-eric-round2.png?v=20260829a') center/78% no-repeat;
+  background: url('logo-eric-round2.png?v=20260829b') center/78% no-repeat;
   opacity:.9;
   background-color: #000;
 }
