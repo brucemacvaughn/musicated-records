@@ -110,20 +110,27 @@ CSS look correct while the live page is wrong. That has happened once and was ve
 replacement that is not square, or not trimmed to its disc, needs different values — and the
 favicons and og-card must be regenerated too (see the logo section above).
 
-## The Live page needs a real YouTube channel id
+## Outbound links — verified, do not swap for homepages
 
-`live.html` has `<div class="stage" data-yt-channel="">`. It is **empty on purpose**. The
-original build shipped `UCBR8-60-B28hp2BmDPdntcQ` there, which is YouTube's OWN corporate
-channel — so the player could never have shown Eric's stream, and the page just rendered
-"This video is unavailable".
+Every store and social link was checked against the live services on 2026-08-29. Two of them are
+real **label** pages; the rest are not, and the difference matters:
 
-While the attribute is empty the page shows a designed offline panel with the schedule and no
-dead buttons. Put Eric's channel id in (YouTube Studio > Settings > Channel > Advanced) and the
-play button and subscribe link appear on their own; pressing play swaps in the real
-channel-live player. Nothing else needs changing.
+- **Traxsource** and **Beatport** have genuine Musicated Records label pages. Linked directly.
+- **Spotify, Apple Music, Tidal, Deezer and YouTube Music have no label pages at all** — they index
+  by artist and album. Those cards point at a search scoped to "Musicated Records", which is the
+  honest best available. Do not "fix" them to an artist page: "Eric Martin" is a very common name
+  (there is also the Mr. Big singer), and the label has several artists anyway. If Eric supplies
+  official DSP links from his distributor, use those instead.
+- **Bandcamp** —  does not exist.  is Eric's own page
+  and is what the card uses.
+- **SoundCloud** —  is the label's own profile.
+- **YouTube** — there is no  channel (404). The footer and the Live page both
+  use Eric's channel,  ("Eric Martin / Me One", @EricMartinMusic).
 
-**Known placeholders elsewhere:** the footer YouTube and SoundCloud social links on every page
-still point at `youtube.com` and `soundcloud.com` rather than Musicated's own profiles.
+The Live page reads that channel id from  in
+. Blank it and the panel falls back to a button-less offline state rather than showing
+a broken player. The original build shipped YouTube's OWN corporate channel id there, so the
+stream could never have appeared — never guess an id.
 
 ## What you cannot do here
 
