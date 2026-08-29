@@ -599,40 +599,76 @@ section{ position:relative; }
 @media (max-width: 1024px){ .stores{ grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 600px){ .stores{ grid-template-columns: repeat(2,1fr); } }
 .store{
+  position:relative;
   display:flex;
   align-items:center;
   gap: 14px;
-  padding: 18px;
+  padding: 18px 46px 18px 18px;
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   color: var(--ink);
-  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+  overflow:hidden;
+  transition: border-color .22s ease, transform .22s ease, background .22s ease, box-shadow .22s ease;
 }
-.store:hover{ border-color: var(--teal); transform: translateY(-2px); background: var(--bg-3); color:#fff; }
+/* brand wash in the top-right corner, lifted on hover */
+.store::before{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(120% 150% at 100% 0%, var(--brand), transparent 55%);
+  opacity:.07;
+  transition: opacity .22s ease;
+  pointer-events:none;
+}
+.store:hover{
+  border-color: var(--brand);
+  transform: translateY(-3px);
+  background: var(--bg-3);
+  color:#fff;
+  box-shadow: 0 14px 34px -18px var(--brand);
+}
+.store:hover::before{ opacity:.16; }
 .store__logo{
-  width:44px; height:44px;
-  border-radius: 10px;
-  background:#000;
+  position:relative;
+  flex: 0 0 auto;
+  width:48px; height:48px;
+  border-radius: 12px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,0) 60%),
+    #05060a;
   display:flex; align-items:center; justify-content:center;
-  color: var(--teal);
+  color: var(--brand);
   font-family: var(--font-display);
-  font-size: 22px;
-  border: 1px solid var(--line);
+  font-size: 20px;
+  letter-spacing:.02em;
+  border: 1px solid var(--line-2);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 0 18px -8px var(--brand);
 }
+.store__text{ position:relative; display:flex; flex-direction:column; gap:5px; min-width:0; }
 .store__name{
   font-family: var(--font-display);
   font-size: 20px;
   line-height: 1;
 }
+.store__go{
+  position:absolute; right:16px; top:50%;
+  width:16px; height:16px;
+  margin-top:-8px;
+  color: var(--brand);
+  opacity:0;
+  transform: translateX(-6px);
+  transition: opacity .22s ease, transform .22s ease;
+}
+.store:hover .store__go{ opacity:1; transform: translateX(0); }
 .store__sub{
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: .2em;
   color: var(--ink-faint);
   text-transform: uppercase;
-  margin-top: 4px;
-  display:block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ---------- Two-column module ---------- */
