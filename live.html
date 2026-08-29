@@ -67,11 +67,30 @@
     </div>
 
     <div class="live-hero reveal">
-      <iframe src="https://www.youtube.com/embed/live_stream?channel=UCBR8-60-B28hp2BmDPdntcQ&autoplay=0" title="Musicated Records Live" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="live-hero__cap">
-        <span class="live-tag"><span class="dot"></span> Currently scheduled · Friday 9pm UK</span>
-        <a href="https://www.youtube.com/" target="_blank" rel="noopener" style="font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--teal);">Open on YouTube →</a>
+      <!-- data-yt-channel is intentionally empty until Eric's real channel id is known.
+           See assets/live-stage.js — filling it in lights up the play + subscribe buttons. -->
+      <div class="stage" data-yt-channel="">
+        <div class="stage__inner">
+          <span class="stage__status"><span class="stage__dot"></span> Not live right now</span>
+          <h3 class="stage__title">In House We Trust</h3>
+          <p class="stage__meta">Monthly radio show &middot; Fridays 9pm UK</p>
+          <div class="stage__cta">
+            <button type="button" class="btn btn--primary stage__play" hidden>Open the live player &rarr;</button>
+            <a class="btn btn--ghost stage__sub" href="#" target="_blank" rel="noopener" hidden>Subscribe on YouTube &rarr;</a>
+          </div>
+          <p class="stage__note">When Eric is on air the stream starts right here.</p>
+        </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="facts reveal">
+      <div class="fact"><p class="fact__k">/ WHEN</p><p class="fact__v">Fridays, 9pm UK</p><p class="fact__s">Monthly show, plus surprise streams from the studio and label parties.</p></div>
+      <div class="fact"><p class="fact__k">/ WHERE</p><p class="fact__v">YouTube &amp; SoundCloud</p><p class="fact__s">Live on YouTube. Every show is uploaded the morning after.</p></div>
+      <div class="fact"><p class="fact__k">/ WHAT</p><p class="fact__v">Classic, deep &amp; soulful house</p><p class="fact__s">Long-form sets from Eric and guests off the roster.</p></div>
     </div>
   </div>
 </section>
@@ -80,16 +99,21 @@
   <div class="wrap">
     <div class="section__head">
       <div>
-        <p class="kicker">/ RECENT EPISODES</p>
-        <h2 class="h2">From the <em>archive</em></h2>
+        <p class="kicker">/ OUT NOW &middot; CATALOG</p>
+        <h2 class="h2">Latest <em>releases</em></h2>
       </div>
-      <p class="section__sub">Every show is uploaded to YouTube and SoundCloud the morning after. Hit subscribe to get them as they drop.</p>
+      <p class="section__sub">What the show has been built around &mdash; the records coming out on the label.</p>
     </div>
     <div class="releases reveal">
-      <a class="release" href="#"><div class="release__cover"><img src="assets/releases/cover-05.jpg" alt="Episode 042" /></div><div class="release__meta"><p class="release__artist">In House We Trust · 042</p><h3 class="release__title">Eric Martin · Live mix</h3><p class="release__cat">May 2026 · 60 mins</p></div></a>
-      <a class="release" href="#"><div class="release__cover"><img src="assets/releases/cover-06.jpg" alt="Episode 041" /></div><div class="release__meta"><p class="release__artist">In House We Trust · 041</p><h3 class="release__title">Paul Lyons · Guest mix</h3><p class="release__cat">Apr 2026 · 75 mins</p></div></a>
-      <a class="release" href="#"><div class="release__cover"><img src="assets/releases/cover-07.jpg" alt="Episode 040" /></div><div class="release__meta"><p class="release__artist">In House We Trust · 040</p><h3 class="release__title">Soulful Sessions</h3><p class="release__cat">Mar 2026 · 90 mins</p></div></a>
-      <a class="release" href="#"><div class="release__cover"><img src="assets/releases/cover-08.jpg" alt="Episode 039" /></div><div class="release__meta"><p class="release__artist">In House We Trust · 039</p><h3 class="release__title">10 Year Anniversary</h3><p class="release__cat">Feb 2026 · 120 mins</p></div></a>
+
+      <div class="release">
+        <div class="release__cover"><img src="assets/releases/cover-phenomenal.jpg" alt="Phenomenal — Me One" loading="lazy" /></div>
+        <div class="release__meta"><p class="release__artist">Me One</p><h3 class="release__title">Phenomenal</h3><p class="release__cat">Coming 18 September 2026</p></div>
+      </div>
+      <a class="release" href="https://www.traxsource.com/title/1887463/retro-flows-83-true2life-remix" target="_blank" rel="noopener"><div class="release__cover"><img src="assets/releases/cover-retro-flows-83-true2life.jpg" alt="Retro Flows 83 (True2Life Remix) &mdash; Eric Martin &amp; Akil The MC" loading="lazy" /><span class="release__play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg></span></div><div class="release__meta"><p class="release__artist">Eric Martin &amp; Akil The MC</p><h3 class="release__title">Retro Flows 83 (True2Life Remix)</h3><p class="release__cat">2022 &middot; Garage</p></div></a>
+      <a class="release" href="https://www.traxsource.com/title/1774093/believe-danny-j-lewis-remixes" target="_blank" rel="noopener"><div class="release__cover"><img src="assets/releases/cover-believe-danny-j-lewis.jpg" alt="Believe (Danny J Lewis Remixes) &mdash; Eric Martin, Black Sonix &amp; Shaun Escoffery" loading="lazy" /><span class="release__play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg></span></div><div class="release__meta"><p class="release__artist">Eric Martin, Black Sonix &amp; Shaun Escoffery</p><h3 class="release__title">Believe (Danny J Lewis Remixes)</h3><p class="release__cat">2022 &middot; Garage</p></div></a>
+      <a class="release" href="https://www.traxsource.com/title/1751423/believe" target="_blank" rel="noopener"><div class="release__cover"><img src="assets/releases/cover-believe.jpg" alt="Believe &mdash; Eric Martin, Black Sonix &amp; Shaun Escoffery" loading="lazy" /><span class="release__play"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M5 3l14 9-14 9V3z"/></svg></span></div><div class="release__meta"><p class="release__artist">Eric Martin, Black Sonix &amp; Shaun Escoffery</p><h3 class="release__title">Believe</h3><p class="release__cat">2022 &middot; Garage</p></div></a>
+    
     </div>
   </div>
 </section>
@@ -167,5 +191,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/live-stage.js" defer></script>
 </body>
 </html>

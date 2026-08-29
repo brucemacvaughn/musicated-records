@@ -110,6 +110,21 @@ CSS look correct while the live page is wrong. That has happened once and was ve
 replacement that is not square, or not trimmed to its disc, needs different values — and the
 favicons and og-card must be regenerated too (see the logo section above).
 
+## The Live page needs a real YouTube channel id
+
+`live.html` has `<div class="stage" data-yt-channel="">`. It is **empty on purpose**. The
+original build shipped `UCBR8-60-B28hp2BmDPdntcQ` there, which is YouTube's OWN corporate
+channel — so the player could never have shown Eric's stream, and the page just rendered
+"This video is unavailable".
+
+While the attribute is empty the page shows a designed offline panel with the schedule and no
+dead buttons. Put Eric's channel id in (YouTube Studio > Settings > Channel > Advanced) and the
+play button and subscribe link appear on their own; pressing play swaps in the real
+channel-live player. Nothing else needs changing.
+
+**Known placeholders elsewhere:** the footer YouTube and SoundCloud social links on every page
+still point at `youtube.com` and `soundcloud.com` rather than Musicated's own profiles.
+
 ## What you cannot do here
 
 - **You cannot see the rendered website.** You read source, not pixels. Never conclude how the
