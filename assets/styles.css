@@ -497,6 +497,29 @@ section{ position:relative; }
   padding: clamp(28px, 5vw, 56px);
   position:relative;
   overflow:hidden;
+  display:grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(20px, 4vw, 56px);
+  align-items:center;
+}
+.def-card__copy{ min-width:0; position:relative; z-index:1; }
+/* the dancefloor — see assets/crowd-viz.js */
+.def-card__floor{
+  position:relative;
+  min-width:0;
+  min-height: clamp(210px, 20vw, 300px);
+}
+.def-card__floor canvas{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  display:block;
+  /* feather the edges so the pulse blooms never clip against the canvas box */
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+@media (max-width: 900px){
+  .def-card{ grid-template-columns: 1fr; }
+  .def-card__floor{ display:none; }
 }
 .def-card::before{
   content:"";

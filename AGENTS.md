@@ -27,6 +27,7 @@ Explain what you did in plain language, and never assume he will read code to un
 | `assets/styles.css` | All styling for every page |
 | `assets/main.js` | Nav, scroll reveals, form handling |
 | `assets/hero-viz.js` | Canvas spinning vinyl on the home page |
+| `assets/crowd-viz.js` | The dancefloor animation inside the "musicated, adj." card. Self-contained canvas; it touches nothing else. |
 | `assets/releases/` | Record cover artwork |
 | `assets/tv/` | TV/film poster artwork for the Sync page |
 | `.nojekyll` | Must exist. Removing it breaks asset serving. |
