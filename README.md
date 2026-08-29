@@ -20,10 +20,9 @@ Nav order: Home / Buy · Listen / Live / Sync / Merch / About / Contact.
 ## Assets & conventions
 
 - Global styles `assets/styles.css`, global JS `assets/main.js`, hero canvas `assets/hero-viz.js`.
-- **Cache-busting is non-negotiable.** Every CSS/JS/asset reference carries `?v=YYYYMMDDx`.
-  Bump it on every change that touches `styles.css`, `main.js` or `hero-viz.js`, or returning
-  visitors get stale files. Current: `?v=20260829i`.
-  One-liner: `sed -i '' 's/v=20260829g/v=20260829g/g' *.html assets/styles.css`
+- **No cache-busting slug.** Asset links are plain (`assets/styles.css`). GitHub Pages
+  caches files for about 10 minutes, so a changed file goes live on its own — there is
+  no `?v=` to remember to bump. If a change looks missing, wait 10 minutes and hard-refresh.
 - Round-2 logo: `assets/logo-eric-round2.png` (transparent PNG, knocked out from Eric's
   "Musicated Blue 2" artwork). Drives the hero overlay, About photo, merch watermarks,
   the favicon set and `og-card.jpg`.
@@ -48,4 +47,4 @@ Pages serves `main` at root. Custom domain is set in repo Settings → Pages.
 ## To activate forms
 
 Sign up at formspree.io, create endpoints for each form, paste them into `FORM_ENDPOINTS`
-at the top of `assets/main.js`, bump the cache version, and push.
+at the top of `assets/main.js`, then commit and push.
