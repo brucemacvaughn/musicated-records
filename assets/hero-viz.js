@@ -8,13 +8,16 @@
   var canvas = document.getElementById("heroViz");
   if (!canvas) return;
 
-  // Keep the Musicated mark visually locked to the vinyl label centre.
-  // The slightly larger scale mirrors the established Musicated hero benchmark.
+  // The current logo asset is a centred 1:1 circular mark.
+  // Match its circle directly to the vinyl label instead of compensating for the old wide logo.
   var heroLogo = document.querySelector(".hero__viz__logo");
   if (heroLogo){
     heroLogo.style.left = "50%";
     heroLogo.style.top = "50%";
-    heroLogo.style.width = "34%";
+    heroLogo.style.width = "36.8%";
+    heroLogo.style.height = "36.8%";
+    heroLogo.style.objectFit = "contain";
+    heroLogo.style.borderRadius = "50%";
     heroLogo.style.transform = "translate(-50%, -50%)";
   }
 
@@ -115,7 +118,6 @@
       ctx.stroke();
     }
     ctx.restore();
-
 
     requestAnimationFrame(frame);
   }
