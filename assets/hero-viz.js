@@ -7,6 +7,17 @@
   "use strict";
   var canvas = document.getElementById("heroViz");
   if (!canvas) return;
+
+  // Keep the Musicated mark visually locked to the vinyl label centre.
+  // The slightly larger scale mirrors the established Musicated hero benchmark.
+  var heroLogo = document.querySelector(".hero__viz__logo");
+  if (heroLogo){
+    heroLogo.style.left = "50%";
+    heroLogo.style.top = "50%";
+    heroLogo.style.width = "34%";
+    heroLogo.style.transform = "translate(-50%, -50%)";
+  }
+
   var ctx = canvas.getContext("2d");
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
