@@ -1,8 +1,15 @@
 /* Musicated Records — Hero Visualizer
-   Animated vinyl + audio EQ ring. The logo is a STATIC HTML overlay
-   (.hero__viz__logo in index.html) — the record spins around it.
-   Its size lives in assets/styles.css. Do NOT set it from here: the logo is a
-   WIDE 1.722:1 lockup (1400x813), not a square mark, whatever the filename says.
+   Animated vinyl + audio EQ ring. The logo in the middle is an HTML overlay
+   (.hero__viz__logo in index.html) that SPINS WITH the record, like a real deck.
+   Its size, position and spin all live in assets/styles.css. Do NOT set any of
+   them from here — runtime inline styles override the stylesheet and make the
+   CSS look correct while the live page is wrong.
+   Two different rates below, which is easy to get wrong: the disc rotates at
+   t*0.6 rad/s (10.472s/turn), but the highlight sweep is drawn inside that
+   rotated context AND given its own start angle of t*0.6, so it travels at
+   1.2 rad/s (5.236s/turn). The grooves are concentric, so the disc's rotation is
+   invisible and the highlight is the only motion you can see — the CSS spin is
+   matched to 5.236s for that reason. Change 0.6 here and update styles.css.
    Pure canvas, no audio input required (procedural waveform)
 */
 (function(){

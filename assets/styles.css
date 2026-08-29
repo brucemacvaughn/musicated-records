@@ -316,17 +316,28 @@ section{ position:relative; }
 .hero__viz__logo{
   position:absolute;
   left:50%; top:50%;
-  transform: translate(-50%, -50%);
   /* The logo is a square circular mark (1200x1200) whose bounding box IS its
      record — trimmed to the disc on purpose, so plain centring works and no
      offset is needed. Sizing: the canvas draws its teal ring at
      0.40 x 0.96 x 0.46 = 0.1766 of the viz. The disc radius is half the image
-     width, so width 32% puts it at 0.16 of the viz = 91% of the ring, leaving
-     the teal visible as a rim around the artwork. */
+     width, so width 32% puts it at 0.16 of the viz = 91% of the ring. */
   width: 32%;
   z-index: 2;
   pointer-events:none;
-  filter: drop-shadow(0 6px 14px rgba(0,0,0,.55));
+  /* Spins WITH the record, like a real deck — matched to the WHITE HIGHLIGHT,
+     which is the only rotation you can actually see. The grooves turn at
+     t*0.6 rad/s (10.472s) but they are concentric circles, so their rotation is
+     invisible. The highlight is drawn inside that rotating context AND given its
+     own start angle of t*0.6, so it travels at 1.2 rad/s = 5.236s per turn
+     (measured on the rendered page: 5.227s). Matching the highlight is what makes
+     the label and the record read as one object. Change 0.6 in hero-viz.js and
+     this must change with it. No drop-shadow — it would orbit with the artwork. */
+  animation: hero-label-spin 5.236s linear infinite;
+  transform: translate(-50%, -50%);
+}
+@keyframes hero-label-spin{
+  from{ transform: translate(-50%, -50%) rotate(0deg); }
+  to  { transform: translate(-50%, -50%) rotate(360deg); }
 }
 .hero__viz::after{
   content:"";
