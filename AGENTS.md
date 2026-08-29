@@ -169,7 +169,7 @@ switching branches to fix a cosmetic problem — **stop and ask a human first.**
 ## Content rules
 
 - The home page hero ends **"In art we trust."** — this is Eric's deliberate wording. Leave it.
-- The label tagline is **"In Groove We Trust"** (changed from "In House We Trust" on 2026-08-29).
+- The label tagline is **"In Grooves We Trust"** (changed from "In House We Trust" on 2026-08-29).
   Two things deliberately keep the OLD wording and must not be swept up in a find-and-replace:
   Eric's radio show, **"In House We Trust"** (live.html episode titles and meta), and the
   **"In House We Trust Tee"** on the hidden merch page. Both are names, not the tagline.
