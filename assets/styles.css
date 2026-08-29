@@ -1,5 +1,5 @@
 /* =========================================================
-   MUSICATED RECORDS — In House We Trust
+   MUSICATED RECORDS — In Groove We Trust
    Design tokens, layout, components, motion
    ========================================================= */
 
@@ -1094,6 +1094,23 @@ footer.site{
   text-transform: uppercase;
   color: var(--ink-faint);
 }
+.site__credit{
+  margin-top: 20px;
+  text-align:center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #4e525c;
+}
+.site__credit a{
+  color: var(--ink-faint);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+  padding-bottom: 1px;
+  transition: color .2s ease, border-color .2s ease;
+}
+.site__credit a:hover{ color: var(--teal); border-color: var(--teal); }
+
 .socials{
   display:flex; gap: 10px;
 }
