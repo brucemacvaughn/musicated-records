@@ -75,6 +75,35 @@ Do not report the logo change as complete without that caveat.
 There is exactly **one** logo file in this repo. Eleven orphaned legacy logo files were deleted to
 stop agents rediscovering the wrong one. Do not add more logo variants.
 
+## Never infer an image's shape from its filename
+
+`assets/musicated-logo-circle.png` is **not** a circular or square mark. It is a **wide 1.722:1
+lockup, 1400x813** — a record with the words MUSICATED RECORDS running across it. The word
+"circle" in the name refers to the artwork's motif, not its dimensions.
+
+An agent already assumed from that filename that the asset was "a centred 1:1 circular mark",
+sized it as a square, and pushed a logo that spilled out of the vinyl label on the live site.
+It could not see the image, so the filename became the evidence. **You cannot see images. If a
+change depends on an image's shape or proportions, say so and ask, rather than inferring.**
+
+## The hero logo geometry
+
+The logo sits inside the vinyl's label ring drawn by `assets/hero-viz.js`.
+
+- Ring radius = `0.40 x 0.46` = **0.184** of the viz width.
+- The logo is 1.722:1, so its half-diagonal is `width x 0.578`.
+- It fits while `width x 0.578 <= 0.184`, i.e. **width <= 31.8%**.
+- It is set to **29%** in `assets/styles.css`, leaving about 9% clearance. Height stays `auto`.
+
+**Do not set the size to 36.8%.** That is the ring *diameter*, and a rectangle as wide as a circle
+is wide cannot fit inside it — the wordmark sits below centre where the circle is narrower, so it
+spills out the sides. This exact mistake has been made once already.
+
+**Do not size the logo from JavaScript.** `hero-viz.js` must not touch `.hero__viz__logo`. Inline
+styles set at runtime override the stylesheet, so the CSS looks correct while the live page is
+wrong — which is very hard for anyone to debug. The size lives in `assets/styles.css` and nowhere
+else.
+
 ## What you cannot do here
 
 - **You cannot see the rendered website.** You read source, not pixels. Never conclude how the

@@ -317,7 +317,12 @@ section{ position:relative; }
   position:absolute;
   left:50%; top:50%;
   transform: translate(-50%, -50%);
-  /* sits inside the canvas vinyl label: label dia = 2*0.40*0.46 = ~37% of the viz */
+  /* Fits the lockup INSIDE the vinyl label ring — do not set this to the ring
+     diameter (36.8%): a rectangle that wide sticks out of a circle that size.
+     Ring radius r = 0.40 * 0.46 = 0.184 of the viz. The logo is 1.722:1, so its
+     half-diagonal is (w/2)*sqrt(1+1/1.722^2) = w*0.578, and it fits while
+     w*0.578 <= 0.184, i.e. w <= 31.8%. 29% leaves ~9% clearance. Height stays
+     auto — forcing a square box is what broke this before. */
   width: 29%;
   z-index: 2;
   pointer-events:none;

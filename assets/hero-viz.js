@@ -1,6 +1,8 @@
 /* Musicated Records — Hero Visualizer
    Animated vinyl + audio EQ ring. The logo is a STATIC HTML overlay
    (.hero__viz__logo in index.html) — the record spins around it.
+   Its size lives in assets/styles.css. Do NOT set it from here: the logo is a
+   WIDE 1.722:1 lockup (1400x813), not a square mark, whatever the filename says.
    Pure canvas, no audio input required (procedural waveform)
 */
 (function(){
@@ -8,18 +10,6 @@
   var canvas = document.getElementById("heroViz");
   if (!canvas) return;
 
-  // The current logo asset is a centred 1:1 circular mark.
-  // Match its circle directly to the vinyl label instead of compensating for the old wide logo.
-  var heroLogo = document.querySelector(".hero__viz__logo");
-  if (heroLogo){
-    heroLogo.style.left = "50%";
-    heroLogo.style.top = "50%";
-    heroLogo.style.width = "36.8%";
-    heroLogo.style.height = "36.8%";
-    heroLogo.style.objectFit = "contain";
-    heroLogo.style.borderRadius = "50%";
-    heroLogo.style.transform = "translate(-50%, -50%)";
-  }
 
   var ctx = canvas.getContext("2d");
   var dpr = Math.min(window.devicePixelRatio || 1, 2);
