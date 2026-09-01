@@ -80,14 +80,14 @@
       ctx.beginPath(); ctx.arc(0,0,R*0.98,0,Math.PI*2); ctx.fill();
     }
     // center label — vinyl label with Musicated logo
-    var lr = R*0.259875;
+    var lr = R*0.27286875;
     // dark label disc — the logo overlay sits on top of this
     ctx.fillStyle = "#0a0a0a";
     ctx.beginPath(); ctx.arc(0,0,lr,0,Math.PI*2); ctx.fill();
     // teal accent ring deliberately sits outside the logo artwork so it remains visible
     ctx.strokeStyle = "#5fc9d6";
     ctx.lineWidth = Math.max(2 * dpr, R*0.010);
-    ctx.beginPath(); ctx.arc(0,0,R*0.315,0,Math.PI*2); ctx.stroke();
+    ctx.beginPath(); ctx.arc(0,0,R*0.33075,0,Math.PI*2); ctx.stroke();
     // center spindle hole
     ctx.fillStyle = "#000";
     ctx.beginPath(); ctx.arc(0,0,lr*0.07,0,Math.PI*2); ctx.fill();
