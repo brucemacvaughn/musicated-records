@@ -80,7 +80,7 @@
       ctx.beginPath(); ctx.arc(0,0,R*0.98,0,Math.PI*2); ctx.fill();
     }
     // center label — vinyl label with Musicated logo
-    var lr = R*0.40;
+    var lr = R*0.30;
     // dark label disc — the static logo overlay sits on top of this
     ctx.fillStyle = "#0a0a0a";
     ctx.beginPath(); ctx.arc(0,0,lr,0,Math.PI*2); ctx.fill();
