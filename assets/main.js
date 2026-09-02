@@ -56,12 +56,11 @@
   }
 
   // ===== Form handler (Formspree-ready) =====
-  // Set endpoints here once Mac sets up Formspree.
   var FORM_ENDPOINTS = {
     contact:    "https://formspree.io/f/mwlkonlq",
     demo:       "",
     sync:       "",
-    newsletter: ""
+    newsletter: "https://formspree.io/f/meaqkeaq"
   };
   var FALLBACK_EMAIL = "info@musicatedrecords.com";
 
@@ -92,9 +91,33 @@
         }).then(function(r){
           if (!r.ok) throw new Error("status " + r.status);
           form.reset();
-          if (status){ status.textContent = "Got it. We'll be in touch."; status.classList.add("is-ok"); }
+          var successMessage = name === "newsletter"
+            ? "Thank you for your subscription. Welcome to the Musicated family — we'll be in touch."
+            : "Got it. We'll be in touch.";
+          if (status){
+            status.textContent = successMessage;
+            status.classList.add("is-ok");
+          } else if (name === "newsletter") {
+            var message = document.createElement("p");
+            message.className = "form__status is-ok";
+            message.textContent = successMessage;
+            message.setAttribute("role", "status");
+            form.insertAdjacentElement("afterend", message);
+          }
         }).catch(function(){
-          if (status){ status.textContent = "Couldn't send. Try emailing " + FALLBACK_EMAIL; status.classList.add("is-err"); }
+          var errorMessage = name === "newsletter"
+            ? "We couldn't complete your subscription. Please try again."
+            : "Couldn't send. Try emailing " + FALLBACK_EMAIL;
+          if (status){
+            status.textContent = errorMessage;
+            status.classList.add("is-err");
+          } else if (name === "newsletter") {
+            var message = document.createElement("p");
+            message.className = "form__status is-err";
+            message.textContent = errorMessage;
+            message.setAttribute("role", "status");
+            form.insertAdjacentElement("afterend", message);
+          }
         }).finally(function(){
           if (submit){ submit.disabled = false; submit.textContent = origSubmitLabel; }
         });
