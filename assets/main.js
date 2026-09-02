@@ -58,7 +58,7 @@
   // ===== Form handler (Formspree-ready) =====
   // Set endpoints here once Mac sets up Formspree.
   var FORM_ENDPOINTS = {
-    contact:    "", // https://formspree.io/f/xxxx
+    contact:    "https://formspree.io/f/mwlkonlq",
     demo:       "",
     sync:       "",
     newsletter: ""
